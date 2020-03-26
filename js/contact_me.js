@@ -1,4 +1,7 @@
 $(document).ready(function() {
+    $("#msg-send").hide();
+    $("#sending").hide();
+    $("#send").hide();
     
     $("input,textarea").jqBootstrapValidation({
         preventSubmit: true,
@@ -6,16 +9,20 @@ $(document).ready(function() {
           
         },
         submitSuccess: function($form, event) {
+            $("#contact").hide();
+            $("#msg-send").show().fadeIn(3000);
+            $("#sending").show();
+
             event.preventDefault(); 
-            var name = $("input#name").val();
-            var email = $("input#email").val();
-            var message = $("textarea#message").val();
+            var name = $("#name").val();
+            var email = $("#email").val();
+            var message = $("#message").val();
             var firstName = name; 
             if (firstName.indexOf(' ') >= 0) {
                 firstName = name.split(' ').slice(0, -1).join(' ');
             }
             $.ajax({
-                url: "mail/contact_me.php",
+                url: "contact-me.php",
                 type: "POST",
                 data: {
                     name: name,
@@ -24,16 +31,18 @@ $(document).ready(function() {
                 },
                 cache: false,
                 success: function() {
+                    $("#sending").hide().fadeOut(2000);
+                    $("#send").show().fadeIn(3000);
                  
-                    $('#success').html("<div class='alert alert-success'>");
-                    $('#success > .alert-success').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;")
-                        .append("</button>");
-                    $('#success > .alert-success')
-                        .append("<strong>Sua mensagem foi enviada! </strong>");
-                    $('#success > .alert-success')
-                        .append('</div>');
+                    // $('#success').html("<div class='alert alert-success'>");
+                    // $('#success > .alert-success').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;")
+                    //     .append("</button>");
+                    // $('#success > .alert-success')
+                    //     .append("<strong>Sua mensagem foi enviada! </strong>");
+                    // $('#success > .alert-success')
+                    //     .append('</div>');
                    
-                    $('#contactForm').trigger("reset");
+                    // $('#contactForm').trigger("reset");
                 },
                 error: function() {
                     
@@ -53,12 +62,12 @@ $(document).ready(function() {
         },
     });
 
-    $("a[data-toggle=\"tab\"]").click(function(e) {
-        e.preventDefault();
-        $(this).tab("show");
-    });
+    // $("a[data-toggle=\"tab\"]").click(function(e) {
+    //     e.preventDefault();
+    //     $(this).tab("show");
+    // });
 });
 
-$('#name').focus(function() {
-    $('#success').html('');
-});
+// $('#name').focus(function() {
+//     $('#success').html('');
+// });
