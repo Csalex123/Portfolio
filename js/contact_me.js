@@ -11,8 +11,8 @@ $(document).ready(function() {
         submitSuccess: function($form, event) {
             $("#contact").hide();
             $("#msg-send").show().fadeIn(3000);
-            $("#sending").show();
-
+            $("#send").show().fadeIn(3000);
+            
             event.preventDefault(); 
             var name = $("#name").val();
             var email = $("#email").val();
@@ -22,7 +22,7 @@ $(document).ready(function() {
                 firstName = name.split(' ').slice(0, -1).join(' ');
             }
             $.ajax({
-                url: "contact-me.php",
+                url: "https://alexricardoteste.000webhostapp.com/sendEmail/contact-me.php",
                 type: "POST",
                 data: {
                     name: name,
@@ -31,8 +31,7 @@ $(document).ready(function() {
                 },
                 cache: false,
                 success: function() {
-                    $("#sending").hide().fadeOut(2000);
-                    $("#send").show().fadeIn(3000);
+ 
                  
                     // $('#success').html("<div class='alert alert-success'>");
                     // $('#success > .alert-success').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;")
