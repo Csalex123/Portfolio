@@ -191,7 +191,8 @@ hr {
 	width: 100%;
 	padding: 0;
 	text-align: center;
-	background: url(../img/code.gif) no-repeat center center fixed;
+	background: url(../img/code.gif) no-repeat center center fixed ;
+	background-position: center;
 	background-color: #e5e5e5;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
@@ -281,9 +282,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#54d0dd', end
 } */
 
 #arrow:hover {
-	transform: scale(1.2);
-	padding: 0 0 10px 0;
-}
+	/* transform: scale(1.2);
+	padding: 0 0 10px 0;*/
+} 
 
 /* Portfólio Section */
 
@@ -304,7 +305,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#54d0dd', end
 #imagem_sobre_mim {
 	max-width: 200px;
 	height: 200px;
-	border-radius: 5px;
+	border-radius: 50%;
 }
 
 .lista_tecnologiass {
